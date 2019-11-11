@@ -15,5 +15,14 @@ module Monolith
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+
+    Dir['components/*'].each do |path|
+      config.paths['app']                 << "#{path}/app"
+      config.paths['app/views']           << "#{path}/app/views"
+      config.paths['config/initializers'] << "#{path}/config/initializers"
+      config.paths['db']                  << "#{path}/db"
+      config.paths['db/migrate']          << "#{path}/db/migrate"
+      config.paths['lib']                 << "#{path}/lib"
+    end
   end
 end

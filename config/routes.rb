@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :songs
+  get '/', to: 'home#index'
+
   resources :people
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  # Evaluate component routes
+  Dir['components/*'].each do |path|
+    instance_eval(File.read("#{path}/config/routes.rb"))
+  end
 end

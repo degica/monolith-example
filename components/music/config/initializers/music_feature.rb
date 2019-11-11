@@ -1,0 +1,1 @@
+ComponentFeatures.enable :music

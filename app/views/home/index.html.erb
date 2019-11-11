@@ -1,0 +1,9 @@
+<h1>Hello</h1>
+
+<h2>Welcome to the test app.</h2>
+
+<%= link_to 'People', people_path %>
+
+<% if ComponentFeatures[:music] %>
+  <%= link_to 'Songs', songs_path %>
+<% end %>

@@ -16,6 +16,7 @@ module Monolith
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
+    # Include component code
     Dir['components/*'].each do |path|
       config.paths['app']                 << "#{path}/app"
       config.paths['app/views']           << "#{path}/app/views"
@@ -24,5 +25,10 @@ module Monolith
       config.paths['db/migrate']          << "#{path}/db/migrate"
       config.paths['lib']                 << "#{path}/lib"
     end
+
+    # Autoload constants from lib
+    config.autoload_paths += [
+      "#{config.root}/lib"
+    ]
   end
 end

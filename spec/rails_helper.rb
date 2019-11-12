@@ -38,6 +38,12 @@ RSpec.configure do |config|
 
   config.include FactoryBot::Syntax::Methods
 
+  # Include component source code in `project_source_dirs` so that they don't
+  # get filtered from stack traces.
+  Dir[Rails.root.join('components/*/spec')].each { |x| config.project_source_dirs << x }
+  Dir[Rails.root.join('components/*/lib')].each { |x| config.project_source_dirs << x }
+  Dir[Rails.root.join('components/*/app')].each { |x| config.project_source_dirs << x }
+
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.

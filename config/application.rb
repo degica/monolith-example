@@ -24,6 +24,8 @@ module Monolith
       config.paths['db']                  << "#{path}/db"
       config.paths['db/migrate']          << "#{path}/db/migrate"
       config.paths['lib']                 << "#{path}/lib"
+
+      config.factory_bot.definition_file_paths << "#{path}/spec/factories"
     end
 
     # Autoload constants from lib
